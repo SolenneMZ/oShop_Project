@@ -4,11 +4,8 @@ class CartController
 {
     public function cart()
     {
-        $dbdata = new DBData();
-        $types = $dbdata->getFooterProductTypes();
         $this->show('cart', [
             'title' => "cart",
-            'types' => $types,
             ]);
     }
 
@@ -49,6 +46,7 @@ class CartController
         // Les marques du footer se trouvent dans show() car elles doivent être affichées dans toutes les pages
         $dbdata = new DBData();
         $footerBrands = $dbdata->getFooterBrands();
+        $footerTypes = $dbdata->getFooterProductTypes();
 
         // $viewVars est disponible dans chaque fichier de vue
         include('../app/views/header.tpl.php');

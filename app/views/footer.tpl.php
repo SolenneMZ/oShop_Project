@@ -1,7 +1,3 @@
-<?php 
-$types = $viewVars['types'];
-?>
-
     <footer class="main-footer">
         <!-- Services block-->
         <div id="footer-services" class="py-5">
@@ -75,7 +71,7 @@ $types = $viewVars['types'];
                         <h6 class="text-uppercase text-dark mb-3">Produits</h6>
                         <ul class="list-unstyled">
                             <?php for ($i=0; $i <= 4; $i++) :?>
-                            <li> <a href="<?=$router->generate('type', ['id' => $i]); ?>" class="text-muted"><?php echo $types[$i]->getName() ?></a></li>
+                            <li> <a href="<?=$router->generate('type', ['id' => $i]); ?>" class="text-muted"><?php echo $footerTypes[$i]->getName() ?></a></li>
                             <?php endfor; ?>
                         </ul>
                     </div>

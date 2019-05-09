@@ -14,11 +14,9 @@ class MainController
         // On appele la méthode show avec la page correspondante
         $dbdata = new DBData();
         $categories = $dbdata->getHomeCategories();
-        $types = $dbdata->getFooterProductTypes();
         $this->show('home', [
             'title' => 'Dans les shoe',
             'categories' => $categories,
-            'types' => $types,
         ]);
     }
 
@@ -26,11 +24,8 @@ class MainController
     {
         // Principe du $viewVars = tableau
         // qui contient les données à afficher
-        $dbdata = new DBData();
-        $types = $dbdata->getFooterProductTypes();
         $this->show('legal-notice', [
             'title' => 'Mentions légales',
-            'types' => $types,
         ]);
     }
 
@@ -38,11 +33,9 @@ class MainController
     {
         $dbdata = new DBData();
         $products = $dbdata->getProducts();
-        $types = $dbdata->getFooterProductTypes();
         $this->show('products', [
             'title' => 'Dans les shoe',
             'products' => $products,
-            'types' => $types,
         ]);
 
     }
@@ -52,11 +45,8 @@ class MainController
      */
     public function error404()
     {
-        $dbdata = new DBData();
-        $types = $dbdata->getFooterProductTypes();
         $this->show('error404', [
             'title' => 'Page non trouvée',
-            'types' => $types,
         ]);
     }
 
@@ -73,6 +63,7 @@ class MainController
         // Les marques du footer se trouvent dans show() car elles doivent être affichées dans toutes les pages
         $dbdata = new DBData();
         $footerBrands = $dbdata->getFooterBrands();
+        $footerTypes = $dbdata->getFooterProductTypes();
 
         // $viewVars est disponible dans chaque fichier de vue
         include(__DIR__.'/../views/header.tpl.php');
