@@ -4,9 +4,14 @@ class CartController extends CoreController
 {
     public function cart()
     {
+        // On va lire les produits depuis la classe Cart
+        $cart = new Cart();
+        $items = $cart->getCartProducts();
+
         $this->show('cart', [
-            'title' => "cart",
-            ]);
+            'title' => 'cart',
+            'items' => $items,
+        ]);
     }
 
     public function add() {

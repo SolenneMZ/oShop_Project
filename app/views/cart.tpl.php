@@ -30,49 +30,35 @@
                   </div>
                 </div>
                 <div class="cart-body">
+
+                  <?php foreach ($items as $item) : ?>
                   <!-- Product-->
                   <div class="cart-item">
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
-                        <div class="d-flex align-items-center"><a href="detail.html"><img src="<?= $_SERVER['BASE_URI'];?>/assets/images/produits/1-kiss_tn.jpg" alt="..." class="cart-item-img"></a>
-                          <div class="cart-title text-left"><a href="detail.html" class="text-uppercase text-dark"><strong>Kissing</strong></a><br><span class="text-muted text-sm">Taille : Large</span><br>
+                        <div class="d-flex align-items-center"><a href="detail.html"><img src="<?= $_SERVER['BASE_URI'];?>/<?= $item['productModel']['picture'] ?>" alt="..." class="cart-item-img"></a>
+                          <div class="cart-title text-left">
+                            <a href="detail.html" class="text-uppercase text-dark"><strong><?= $item['productModel']['name'] ?></strong></a><br>
+                            <span class="text-muted text-sm">Taille : Large</span><br>
                             <span class="text-muted text-sm">Couleur : Jaune</span>
                           </div>
                         </div>
                       </div>
-                      <div class="col-2">65€</div>
+                      <div class="col-2"><?= $item['productModel']['price'] ?>€</div>
                       <div class="col-2">
                         <div class="d-flex align-items-center">
                           <div class="btn btn-items btn-items-decrease">-</div>
-                          <input value="4" class="form-control text-center input-items" type="text">
+                          <input value="<?= $item['quantity'] ?>" class="form-control text-center input-items" type="text">
                           <div class="btn btn-items btn-items-increase">+</div>
                         </div>
                       </div>
                       <div class="col-2 text-center">260€</div>
-                      <div class="col-1 text-center"><a href="#" class="cart-remove"> <i class="fa fa-times"></i></a></div>
+                      <div class="col-1 text-center"><a href="<?php echo $router->generate('delete', ['id' => $item['product']['id']]); ?>" class="cart-remove"> <i class="fa fa-times"></i></a></div>
                     </div>
                   </div>
-                  <!-- Product-->
-                  <div class="cart-item">
-                    <div class="row d-flex align-items-center text-center">
-                      <div class="col-5">
-                        <div class="d-flex align-items-center"><a href="detail.html"><img src="<?= $_SERVER['BASE_URI'];?>/assets/images/produits/13-unicorn_tn.jpg" alt="..." class="cart-item-img"></a>
-                          <div class="cart-title text-left"><a href="detail.html" class="text-uppercase text-dark"><strong>Unicorn</strong></a><br><span class="text-muted text-sm">Taille : Petite</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-2">55€</div>
-                      <div class="col-2">
-                        <div class="d-flex align-items-center">
-                          <div class="btn btn-items btn-items-decrease">-</div>
-                          <input value="3" class="form-control text-center input-items" type="text">
-                          <div class="btn btn-items btn-items-increase">+</div>
-                        </div>
-                      </div>
-                      <div class="col-2 text-center">165€</div>
-                      <div class="col-1 text-center"><a href="#" class="cart-remove"> <i class="fa fa-times"></i></a></div>
-                    </div>
-                  </div>
+                  <!-- /Product -->
+                  <?php endforeach; ?>
+
                 </div>
               </div>
             </div>

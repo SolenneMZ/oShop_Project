@@ -5,7 +5,7 @@
  * Cart => $products => via load() + save() = $_SESSION (DBData)
  */
 
-class Cart extends CoreModel {
+class Cart {
 
     /**
      * @var array $products Liste de produits
@@ -32,16 +32,19 @@ class Cart extends CoreModel {
     }
 
     public function addProduct($productModel, $qty) {
-        // ajouter un produit dans le panier
-        // $qty et sa quantité
-        // les [] permettent d'ajouter un élément au tableau
-        $this->products[$productModel['id']] = [
-            'productModel' => $productModel,
-            'quantity' => $qty,
-        ];
-
-        // on sauvegarde notre nouveau produit/panier
+        // PROBLÈME : Si le produit est déjà dans le panier, on ajoute la quantité
+        // SOLUTION : Possible avec isset()
+        if (array_key_exists($productModel['id'], $this->products)) {
+            $this->products[$productModel['id']]['quantity'] += $quantity;
+        } else {
+            $this->products[$productModel['id']] = [
+                'productModel' => $productModel,
+                'quantity' => $qty,
+            ];
+        }
+        // on sauvegarde notre nouveau produit/panier        
         $this->save();
+
     }
 
     public function deleteProduct($productID) {
@@ -54,6 +57,7 @@ class Cart extends CoreModel {
 
     public function getCartProducts() {
         // un Getter qui retourne la liste des produits dans le panier et leur quantité
+        return $this->products;
     }
 
     public function getTotal() {

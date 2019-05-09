@@ -34,12 +34,12 @@ $products = $dbdata->getProducts();
           <div class="product-action-buttons">
             <!-- Boutin du formulaire prend le style CSS du lien intégré -->
             <form action="<?php echo $router->generate('add'); ?>" method="post">
-                <input type="hidden" name="id" value="1">
+                <input type="hidden" name="id" value="<?= $currentId ?>">
                 <input type="hidden" name="quantity" value="1">
                 <button type="submit" class="btn btn-outline-dark btn-product-left"><i class="fa fa-shopping-cart"></i></button>
             </form>
 
-            <a href="<?=$router->generate('product', ['id' => 1]); ?>" class="btn btn-dark btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
+            <a href="<?=$router->generate('product', ['id' => $currentId]); ?>" class="btn btn-dark btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
           </div>
           <div class="py-2">
             <p class="text-muted text-sm mb-1"><?= $currentProduct->getBrand_id() ?></p>
