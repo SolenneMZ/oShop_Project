@@ -89,28 +89,18 @@ class DBData
      * @return Product
      */
     public function getProductDetails($productId) {
-        $sql = 'SELECT * FROM `product`';
+        $sql = 'SELECT product.*, category.name AS category_name, brand.name AS brand_name FROM `product`
+        LEFT JOIN category ON product.category_id=category.id
+        LEFT JOIN brand ON product.brand_id=brand.id
+        WHERE product.id='.$productId;
 
+        // On effectue la requête sur le serveur
         $result = $this->dbh->query($sql);
+        // On récupère le résultat de la requête via $result
+        $product = $result->fetch(PDO::FETCH_ASSOC);
 
-        $result->setFetchMode(PDO::FETCH_CLASS, 'Product');
-
-        $productObject = $result->fetch();
-
-        return $productObject; 
+        return $product;
     }
-    // public function getProductDetails($productId)
-    // {
-    //     $sql = 'SELECT * FROM `product` WHERE id='.$productId;
-
-    //     $result = $this->dbh->query($sql);
-
-    //     $result->setFetchMode(PDO::FETCH_CLASS, 'Product');
-
-    //     $productObject = $result->fetch();
-
-    //     return $productObject; 
-    // }
     
     /**
      * Méthode permettant de retourner les données sur une catégorie donnée
@@ -137,6 +127,10 @@ class DBData
         $result->setFetchMode(PDO::FETCH_CLASS, 'Brand');
         // On récupère le résultat de la requête via $result
         $brandObject = $result->fetch();
+
+        // Syntaxe alternative: 
+        // $brandObject = $result->fetchObject('Brand');
+
 
         // dd($brandObject); = DUMP AND DIE
 

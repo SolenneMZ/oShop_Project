@@ -16,7 +16,7 @@ class Product extends CoreModel
     private $category_id;
     private $type_id;
 
-    public function __construct($name='', $description='', $picture='', $price='', $rate='', $category='', $type='', $brand='') {
+    public function __construct($name='', $description='', $picture='', $price='', $rate='', $category='', $type_id='', $brand_id='') {
         
         $this->name = $name;
         $this->description = $description;
@@ -24,8 +24,8 @@ class Product extends CoreModel
         $this->price = $price;
         $this->rate = $rate;
         $this->category = $category;
-        $this->type = $type;
-        $this->brand = $brand;
+        $this->type = $type_id;
+        $this->brand_id = $brand_id;
     }
 
     /**

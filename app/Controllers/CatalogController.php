@@ -31,9 +31,13 @@ class CatalogController
 
     public function product($urlParams)
     {
+        $dbdata = new DBData();
+        // on va chercher le produit dont l'id est dans le tableau de paramètres d'URL
+        $product = $dbdata->getProductDetails($urlParams['id']);        
         $this->show('product', [
             'title' => "Titre product",
             'id' => $urlParams['id'],
+            'product' => $product,
         ]);
     }
 
