@@ -205,7 +205,7 @@ class DBData
         $sql = 'SELECT *
         FROM `brand`
         WHERE footer_order != 0
-        LIMIT 5';
+        ORDER BY footer_order ASC';
 
         $result = $this->dbh->query($sql);
 
