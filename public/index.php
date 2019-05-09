@@ -94,7 +94,7 @@ if ($match !== false) {
     // 404
     http_response_code(404);
     // On appelle la 404 qui est dans MainController
-    $controller = new MainController();
+    $controller = new MainController($router);
     $controller->error404();
 }
 
