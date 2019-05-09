@@ -126,6 +126,10 @@ a:hover {
   transform: scale(1.1);
 }
 
+.fa-star-o {
+  padding-right: 0.2em; 
+}
+
 /* Cart */
 .block-body {
   padding: 1.2rem 1.5rem;
