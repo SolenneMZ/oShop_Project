@@ -53,7 +53,9 @@
                         </div>
                       </div>
                       <div class="col-2 text-center">260€</div>
-                      <div class="col-1 text-center"><a href="<?php echo $router->generate('delete', ['id' => $item['product']['id']]); ?>" class="cart-remove"> <i class="fa fa-times"></i></a></div>
+                      <div class="col-1 text-center">
+                        <form action="<?php echo $router->generate('delete', ['id' => $item['productModel']['id']]); ?>" method="post"> <button type="submit"><i class="fa fa-times"></i></button>                        
+                      </div>
                     </div>
                   </div>
                   <!-- /Product -->

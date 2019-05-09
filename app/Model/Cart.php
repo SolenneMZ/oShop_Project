@@ -47,8 +47,21 @@ class Cart {
 
     }
 
-    public function deleteProduct($productID) {
-        // supprimer un produit du panier
+    public function deleteProduct($productId) {
+        // supprimer un produit du panier avec unset
+        if (array_key_exists($productId, $this->products)) {
+            // on supprime l'élément du tableau
+            unset($this->products[$productId]);
+            // on save
+            $this->save();
+
+            // les valeurs de retour true ou false peuvent servir à effectuer un choix en retour de l'appel
+            // cad là où la fonction a été appelée
+            return true;
+
+        }
+
+        return false; 
     }
 
     public function changeQty($productId, $newQty) {

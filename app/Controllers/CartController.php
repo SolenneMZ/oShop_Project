@@ -52,7 +52,10 @@ class CartController extends CoreController
     public function delete($urlParams)
     {
         // On supprime l'id reçu via la route et $urlParams['id']
-        dd('Suppression de l\'article ' . $urlParams['id']);
+        $cart = new Cart();
+        $cart->deleteProduct($urlParams['id']);
+
+        header('Location: ' . $this->router->generate('cart'));
     }
 
 }
