@@ -99,13 +99,17 @@ class DBData
     /**
      * Méthode pour récupérer les produits d'une catégorie
      */
-    public function getProductsFromCategory($categoryId) {
-        $sql = 'SELECT *
+    public function getProductsFromCategory($categoryId)
+    {
+        $sql = 'SELECT product.*, type.name AS type_name
         FROM `product`
+        INNER JOIN type ON product.type_id=type.id
         WHERE category_id='.$categoryId.'
         ORDER BY name ASC';
+        // On effectue la requête sur le serveur
         $result = $this->dbh->query($sql);
-        $products = $result->fetchAll(PDO::FETCH_CLASS, 'Product');
+        // On récupère le résultat de la requête via $result
+        $products = $result->fetchAll(PDO::FETCH_ASSOC);
 
         return $products;
     }

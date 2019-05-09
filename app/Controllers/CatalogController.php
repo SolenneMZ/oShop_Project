@@ -8,8 +8,6 @@ class CatalogController extends CoreController
     public function category($urlParams)
     {
         // On va chercher les produits de la catégorie demandée
-        // en BDD
-        // ...
         $dbdata = new DBData();
         $products = $dbdata->getProductsFromCategory($urlParams['id']);
 

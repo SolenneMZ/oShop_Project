@@ -1,6 +1,8 @@
 <?php
-// On crée une variable temporaire pour se simplifier l'écriture
-$categories = $viewVars['categories'];
+// // On crée une variable temporaire pour se simplifier l'écriture
+// $categories = $viewVars['categories'];
+// plus besoin de la ligne 3 puisque modif dans le CoreController avec extract($viewVars);
+// tous les viewVars peuvent être remplacés par le nom de la variable 
 ?>
 
   <section>
