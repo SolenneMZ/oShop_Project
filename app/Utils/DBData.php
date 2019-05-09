@@ -118,8 +118,7 @@ class DBData
      * @param int $categoryId
      * @return Category
      */
-    public function getCategoryDetails($categoryId)
-    {
+    public function getCategoryDetails($categoryId) {
         // TODO
     }
     
@@ -129,8 +128,7 @@ class DBData
      * @param int $brandId Brand database id
      * @return Brand
      */
-    public function getBrandDetails($brandId)
-    {
+    public function getBrandDetails($brandId) {
         // Requête SQL
         $sql = 'SELECT * FROM `brand` WHERE id='.$brandId;
         // On effectue la requête sur le serveur
@@ -177,8 +175,7 @@ class DBData
      *
      * @return Category[]
      */
-    public function getHomeCategories()
-    {
+    public function getHomeCategories() {
         $sql = 'SELECT *
         FROM `category`
         WHERE home_order != 0
@@ -200,8 +197,7 @@ class DBData
      *
      * @return Brand[]
      */
-    public function getFooterBrands()
-    {
+    public function getFooterBrands() {
         $sql = 'SELECT *
         FROM `brand`
         WHERE footer_order != 0
@@ -222,8 +218,7 @@ class DBData
      *
      * @return ProductType[]
      */
-    public function getFooterProductTypes()
-    {
+    public function getFooterProductTypes() {
         $sql = 'SELECT *
         FROM `type`
         WHERE footer_order != 0
@@ -231,9 +226,9 @@ class DBData
 
         $result = $this->dbh->query($sql);
 
-        $result->setFetchMode(PDO::FETCH_CLASS, 'Brand');
-
-        $types = $result->fetchAll();
+        // $result->setFetchMode(PDO::FETCH_CLASS, 'Brand');
+        // $types = $result->fetchAll();
+        $types = $result->fetchAll(PDO::FETCH_CLASS, 'Brand');
 
         return $types;
     }

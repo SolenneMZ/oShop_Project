@@ -78,7 +78,7 @@
                                 <span class="badge badge-secondary">New</span>
                             </a>
                             <div class="d-none d-lg-block">
-                                <a id="cartdetails" href="#" class="navbar-icon-link">
+                                <a id="cartdetails" href="<?=$router->generate('cart')?>" class="navbar-icon-link">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span class="badge badge-secondary">2</span>
                                 </a>
