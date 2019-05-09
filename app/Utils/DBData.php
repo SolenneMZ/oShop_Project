@@ -209,9 +209,10 @@ class DBData
 
         $result = $this->dbh->query($sql);
 
-        $result->setFetchMode(PDO::FETCH_CLASS, 'Brand');
-
-        $brands = $result->fetchAll();
+        // $result->setFetchMode(PDO::FETCH_CLASS, 'Brand');
+        // $brands = $result->fetchAll();
+        // Ces deux lignes résumées en une:
+        $brands = $result->fetchAll(PDO::FETCH_CLASS, 'Brand');
 
         return $brands;
     }

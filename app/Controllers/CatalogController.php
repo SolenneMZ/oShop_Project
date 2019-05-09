@@ -13,12 +13,10 @@ class CatalogController
 
         // On appele la méthode show avec la page correspondante
         $dbdata = new DBData();
-        $brands = $dbdata->getFooterBrands();
         $types = $dbdata->getFooterProductTypes();
         $this->show('category', [
             'title' => 'Titre de la catégorie',
             'id' => $urlParams['id'],
-            'brands' =>$brands,
             'types' => $types,
         ]);
     }
@@ -29,12 +27,10 @@ class CatalogController
         // ...
 
         $dbdata = new DBData();
-        $brands = $dbdata->getFooterBrands();
         $types = $dbdata->getFooterProductTypes();
         $this->show('category', [
             'title' => "Titre type",
             'id' => $urlParams['id'],
-            'brands' =>$brands,
             'types' => $types,
         ]);
     }
@@ -42,12 +38,10 @@ class CatalogController
     public function product($urlParams)
     {
         $dbdata = new DBData();
-        $brands = $dbdata->getFooterBrands();
         $types = $dbdata->getFooterProductTypes();
         $this->show('product', [
             'title' => "Titre product",
             'id' => $urlParams['id'],
-            'brands' =>$brands,
             'types' => $types,
         ]);
     }
@@ -62,6 +56,11 @@ class CatalogController
     {
         // C'est sale mais pas trop le choix à ce stade
         global $router;
+
+
+        // Les marques du footer se trouvent dans show() car elles doivent être affichées dans toutes les pages
+        $dbdata = new DBData();
+        $footerBrands = $dbdata->getFooterBrands();
 
         // $viewVars est disponible dans chaque fichier de vue
         include(__DIR__.'/../views/header.tpl.php');

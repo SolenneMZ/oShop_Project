@@ -1,5 +1,4 @@
 <?php 
-$brands = $viewVars['brands'];
 $types = $viewVars['types'];
 ?>
 
@@ -83,9 +82,9 @@ $types = $viewVars['types'];
                     <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
                         <h6 class="text-uppercase text-dark mb-3">Marques</h6>
                         <ul class="list-unstyled">
-                        <?php for ($i=0; $i <= 4; $i++) :?>
-                            <li> <a href="<?=$router->generate('type', ['id' => $i]); ?>" class="text-muted"><?php echo $brands[$i]->getName() ?></a></li>                            
-                        <?php endfor; ?>
+                        <?php foreach ($footerBrands as $brand) :?>
+                            <li> <a href="<?=$router->generate('type', ['id' => $i]); ?>" class="text-muted"><?php echo $brand->getName() ?></a></li>                            
+                        <?php endforeach; ?>
                         </ul>
                     </div>
                     <div class="col-lg-4">

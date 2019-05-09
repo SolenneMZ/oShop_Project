@@ -14,12 +14,10 @@ class MainController
         // On appele la méthode show avec la page correspondante
         $dbdata = new DBData();
         $categories = $dbdata->getHomeCategories();
-        $brands = $dbdata->getFooterBrands();
         $types = $dbdata->getFooterProductTypes();
         $this->show('home', [
             'title' => 'Dans les shoe',
             'categories' => $categories,
-            'brands' => $brands,
             'types' => $types,
         ]);
     }
@@ -29,11 +27,9 @@ class MainController
         // Principe du $viewVars = tableau
         // qui contient les données à afficher
         $dbdata = new DBData();
-        $brands = $dbdata->getFooterBrands();
         $types = $dbdata->getFooterProductTypes();
         $this->show('legal-notice', [
             'title' => 'Mentions légales',
-            'brands' =>$brands,
             'types' => $types,
         ]);
     }
@@ -42,12 +38,10 @@ class MainController
     {
         $dbdata = new DBData();
         $products = $dbdata->getProducts();
-        $brands = $dbdata->getFooterBrands();
         $types = $dbdata->getFooterProductTypes();
         $this->show('products', [
             'title' => 'Dans les shoe',
             'products' => $products,
-            'brands' =>$brands,
             'types' => $types,
         ]);
 
@@ -59,11 +53,9 @@ class MainController
     public function error404()
     {
         $dbdata = new DBData();
-        $brands = $dbdata->getFooterBrands();
         $types = $dbdata->getFooterProductTypes();
         $this->show('error404', [
             'title' => 'Page non trouvée',
-            'brands' =>$brands,
             'types' => $types,
         ]);
     }
@@ -77,6 +69,10 @@ class MainController
     public function show($viewName, $viewVars = array()) {
         // C'est sale mais pas trop le choix à ce stade
         global $router;
+
+        // Les marques du footer se trouvent dans show() car elles doivent être affichées dans toutes les pages
+        $dbdata = new DBData();
+        $footerBrands = $dbdata->getFooterBrands();
 
         // $viewVars est disponible dans chaque fichier de vue
         include(__DIR__.'/../views/header.tpl.php');
