@@ -1,6 +1,6 @@
 <?php
 
-class CartController
+class CartController extends CoreController
 {
     public function cart()
     {
@@ -39,18 +39,4 @@ class CartController
         dd('Suppression de l\'article ' . $urlParams['id']);
     }
 
-    public function show($viewName, $viewVars=array())
-    {
-        global $router;
-
-        // Les marques du footer se trouvent dans show() car elles doivent être affichées dans toutes les pages
-        $dbdata = new DBData();
-        $footerBrands = $dbdata->getFooterBrands();
-        $footerTypes = $dbdata->getFooterProductTypes();
-
-        // $viewVars est disponible dans chaque fichier de vue
-        include('../app/views/header.tpl.php');
-        include('../app/views/'.$viewName.'.tpl.php');
-        include('../app/views/footer.tpl.php');
-    }
 }

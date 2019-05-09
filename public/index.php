@@ -21,6 +21,7 @@ require __DIR__.'/../app/Model/Type.php';
 // $dbdata->getHomeCategories();
 
 // On require nos contrôleurs
+require __DIR__ .'/../app/Controllers/CoreController.php';
 require __DIR__ . '/../app/Controllers/MainController.php';
 require __DIR__ . '/../app/Controllers/CatalogController.php';
 require __DIR__ .'/../app/Controllers/CartController.php';
