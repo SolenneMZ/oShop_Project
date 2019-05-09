@@ -45,8 +45,8 @@
             <div class="product-action-buttons">
 
               <form action="<?php echo $router->generate('add'); ?>" method="post">
-                  <input type="hidden" name="id" value="<?= $viewVars['id']?>">
-                  <input type="hidden" name="quantity" value="1">
+                  <input type="hidden" name="id" value="<?= $id?>">
+                  <input type="number" name="quantity" value="1">
                   <button class="btn btn-dark btn-buy"><i class="fa fa-shopping-cart"></i><span class="btn-buy-label ml-2">Ajouter au panier</span></button>
               </form>
 
@@ -54,7 +54,7 @@
           
             <div class="mt-5">
               <p itemprop="description">
-              <?= $viewVars['product']['description']?>
+              <?= $product['description']; ?>
               </p>
             </div>
           </div>

@@ -15,6 +15,7 @@ require __DIR__.'/../app/Model/Brand.php';
 require __DIR__.'/../app/Model/Product.php';
 require __DIR__.'/../app/Model/Category.php';
 require __DIR__.'/../app/Model/Type.php';
+require __DIR__.'/../app/Model/Cart.php';
 
 // Test DBData
 // $dbdata = new DBData();
@@ -25,6 +26,10 @@ require __DIR__ .'/../app/Controllers/CoreController.php';
 require __DIR__ . '/../app/Controllers/MainController.php';
 require __DIR__ . '/../app/Controllers/CatalogController.php';
 require __DIR__ .'/../app/Controllers/CartController.php';
+
+// Démarrage de la session (après l'include des Models)
+session_name('OSHOPSESSID');
+session_start();
 
 // On utiliser AltoRouter
 $router = new AltoRouter();

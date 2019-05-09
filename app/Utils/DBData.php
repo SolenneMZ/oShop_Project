@@ -99,8 +99,7 @@ class DBData
     /**
      * Méthode pour récupérer les produits d'une catégorie
      */
-    public function getProductsFromCategory($categoryId)
-    {
+    public function getProductsFromCategory($categoryId) {
         $sql = 'SELECT product.*, type.name AS type_name
         FROM `product`
         INNER JOIN type ON product.type_id=type.id
@@ -140,8 +139,7 @@ class DBData
      * @param int $categoryId
      * @return Category
      */
-    public function getCategoryDetails($categoryId)
-    {
+    public function getCategoryDetails($categoryId) {
         // Reque avec un paramètre
         $sql = 'SELECT *
         FROM `category`

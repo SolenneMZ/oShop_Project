@@ -10,7 +10,7 @@ class CoreController
     /** 
      * @var AltoRouter $router Router 
      */
-    private $router;
+    protected $router;
 
     /**
      * On profite du constructeur pour initialiser des propriétés

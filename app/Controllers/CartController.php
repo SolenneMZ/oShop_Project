@@ -9,16 +9,27 @@ class CartController extends CoreController
             ]);
     }
 
-    public function add()
-    {
-        global $router;
-        echo 'Données reçues :';
+    public function add() {
+        // 1. récupération du produit selon l'id donné via POST
+        $dbdata = new DBData();
+        $productModel = $dbdata->getProductDetails($_POST['id']);
+
+        // 2. récupération de la quantité
+        $qty = $_POST['quantity'];
+
+        // 3. ajout au panier
+        $cart = new Cart();
+        $cart->addProduct($productModel, $qty);
+
+
+        // 4. redirection vers la page
+        header('Location: ' . $this->router->generate('cart'));
+
         // $_POST contient les infos envoyées en POST via le form
-        // On debug via dump & die
-        dd($_POST);
 
         // Traitement du form (ajout en session ou BDD ou envoi mail de contact)
         // ...
+        // $cart->addProduct();
 
         // On redirige vers une page, ici le panier
         // Ici pas de template car on redirige vers une autre page
