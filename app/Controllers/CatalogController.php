@@ -10,12 +10,15 @@ class CatalogController extends CoreController
         // On va chercher les produits de la catégorie demandée
         $dbdata = new DBData();
         $products = $dbdata->getProductsFromCategory($urlParams['id']);
+        // Infos de la catégorie
+        $category = $dbdata->getCategoryDetails($urlParams['id']);
 
         // On appele la méthode show avec la page correspondante
         $this->show('category', [
             'title' => 'Titre de la catégorie',
             'id' => $urlParams['id'],
             'products' => $products,
+            'category' => $category,
         ]);
     }
 

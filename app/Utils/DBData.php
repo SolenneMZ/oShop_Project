@@ -140,8 +140,19 @@ class DBData
      * @param int $categoryId
      * @return Category
      */
-    public function getCategoryDetails($categoryId) {
-        // TODO
+    public function getCategoryDetails($categoryId)
+    {
+        // Reque avec un paramètre
+        $sql = 'SELECT *
+        FROM `category`
+        WHERE id='.$categoryId;
+
+        // On effectue la requête sur le serveur
+        $result = $this->dbh->query($sql);
+        // On récupère le résultat de la requête via $result
+        $category = $result->fetchObject('Category');
+
+        return $category;
     }
     
     /**
