@@ -5,9 +5,9 @@
  */
 
  class CoreModel {
-     private $id;
-     private $created_at;
-     private $updated_at;
+     protected $id;
+     protected $created_at;
+     protected $updated_at;
 
     // ou
     //  protected $id;

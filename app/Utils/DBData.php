@@ -26,8 +26,7 @@ class DBData
     /**
      * Constructeur se connectant à la base de données à partir des informations du fichier de configuration
      */
-    public function __construct()
-    {
+    public function __construct() {
         // Récupération des données du fichier de config
         //   la fonction parse_ini_file parse le fichier et retourne un array associatif
         // Attention, "config.conf" ne doit pas être versionné,
@@ -94,6 +93,20 @@ class DBData
 
         }
         
+        return $products;
+    }
+
+    /**
+     * Méthode pour récupérer les produits d'une catégorie
+     */
+    public function getProductsFromCategory($categoryId) {
+        $sql = 'SELECT *
+        FROM `product`
+        WHERE category_id='.$categoryId.'
+        ORDER BY name ASC';
+        $result = $this->dbh->query($sql);
+        $products = $result->fetchAll(PDO::FETCH_CLASS, 'Product');
+
         return $products;
     }
 

@@ -16,6 +16,11 @@ class CoreController
         // C'est sale mais pas trop le choix à ce stade
         global $router;
         
+        // Le top serait que toutes les clés du tableau $viewVars
+        // soient accessible directement par le nom de la clé
+        // ex. : $categories = $viewVars['categories'], $id = $viewVars['id']
+
+
         // Marques du footer
         // Se trouvent dans show() car doivent être affichées
         // sur toutes les pages

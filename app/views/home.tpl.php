@@ -14,7 +14,7 @@ $categories = $viewVars['categories'];
               alt="Card image" class="card-img">
             <div class="card-img-overlay d-flex align-items-center">
               <div class="w-100 py-3">
-                <h2 class="display-3 font-weight-bold mb-4"><?php echo $categories[$c]->getName() ?></h2><a href="<?=$router->generate('category', ['id' => 1]); ?>" class="btn btn-light"><?php echo $categories[$c]->getSubtitle() ?></a>
+                <h2 class="display-3 font-weight-bold mb-4"><?php echo $categories[$c]->getName() ?></h2><a href="<?=$router->generate('category', ['id' => $categories[$c]->getId()]); ?>" class="btn btn-light"><?php echo $categories[$c]->getSubtitle() ?></a>
               </div>
             </div>
           </div>
