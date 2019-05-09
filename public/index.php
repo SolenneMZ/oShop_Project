@@ -79,7 +79,7 @@ if ($match !== false) {
     // Appelons notre contrôleur et notre méthode dynamiquement
     // $controller = new "MainController"();
     // car $controllerName vaut "MainController"
-    $controller = new $controllerName(); // Merci PHP :)
+    $controller = new $controllerName($router); // Merci PHP :)
     // On va appler la méthode de la même manière
     // idem ici $methodName vaut "home"
     // $controller->"home"();

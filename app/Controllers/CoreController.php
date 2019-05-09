@@ -6,6 +6,19 @@
 
 class CoreController
 {
+
+    /** 
+     * @var AltoRouter $router Router 
+     */
+    private $router;
+
+    /**
+     * On profite du constructeur pour initialiser des propriétés
+     */
+    public function __construct($router) {
+        $this->router = $router;
+    }
+
     /**
      * Cette méthode factorise le bout de code qui était présent
      * dans les point d'éntrées précédents (index.php, about.php)
@@ -13,9 +26,12 @@ class CoreController
      * du fichier à inclure
      */
     public function show($viewName, $viewVars = array()) {
-        // C'est sale mais pas trop le choix à ce stade
-        global $router;
-        
+        // PROBLEME : c'est sale mais pas trop le choix à ce stade
+        // global $router;
+        // SOLUTION: le déplacer en propriété de la classe
+        // on crée une variable locale à show() qui contient une ref à notre routeur 
+        $router = $this->router; 
+
         // Le top serait que toutes les clés du tableau $viewVars
         // soient accessible directement par le nom de la clé
         // ex. : $categories = $viewVars['categories'], $id = $viewVars['id']
