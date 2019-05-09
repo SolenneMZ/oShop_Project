@@ -1,4 +1,19 @@
 <?php
+// Quand on crée une méthode dans DBData
+/*
+1 - déclarer la méthode
+2 - écrire la requête SQL dans une variable de type String
+3 - sur le connecteur (objet PDO) exécute la méthode query avec la requête en paramètre
+4 - 2 cas de figure :
+    4-a) 1 seul résultat => $pdoStatement->fetch ou $pdoStatement->fetchObject
+    4-b) plusieurs résultats => $pdoStatement->fetchAll
+5 - Retour en Objet ou Tableau :
+    5-a) requête sur 1 seule table :
+        5-a-i) 1 seul résultat => fetchObject(le Model correspondant)
+        5-a-ii) plusieurs résultats => fetchAll(PDO::FETCH_CLASS, le Model correspondant)
+    5-b) requête sur plusieurs tables => PDO::FETCH_ASSOC
+6 - retourner le tableau
+*/
 
 /**
  * Classe permettant de retourner des données stockées dans la base de données
